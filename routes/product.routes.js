@@ -1,16 +1,19 @@
 const express = require('express');
 const ProductModel = require('../models/product.model');
+const { addProduct, getProductById, getAllProducts, updateProductById, } = require('../controllers/product.controller');
 
 const productRouter = express.Router();
 
-productRouter.post('/', async (req, res) => {
-    try {
-        const product = await ProductModel.create(req.body);
-        res.status(201).json({ msg: 'product added success', product })
-    } catch (err) {
-        console.log('Error : ', err);
-        res.status(500).json({ msg: "something went bad" })
-    }
-})
+// create product
+productRouter.post('/', addProduct);
+
+// read product, get all products
+productRouter.get('/',getAllProducts);
+
+// get product by id
+productRouter.get('/:id',getProductById);
+
+// update product
+productRouter.patch('/:id',updateProductById);
 
 module.exports = productRouter;
