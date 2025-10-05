@@ -35,13 +35,13 @@ const getProductById = async (req, res) => {
 const updateProductById = async (req, res) => {
     try {
         const { id } = req.params;
-        // const {title,description,stock_quantity}=req.body;
+        // When updating a product, the stock_quantity cannot go below zero.
+        
         let product = await ProductModel.findByIdAndUpdate(
             id,
             req.body,
             { new: true, runValidators: true }
         );
-        // if (!product) return res.status(400).json({ msg: 'product not found' });
         res.status(201).json({ msg: 'product added success', product })
     } catch (err) {
         console.log('Error : ', err);
@@ -49,4 +49,52 @@ const updateProductById = async (req, res) => {
     }
 }
 
-module.exports = { addProduct, getAllProducts, getProductById, updateProductById}
+const deleteProductById = async (req, res) => {
+    try {
+        const { id } = req.params;
+        let product = await ProductModel.findByIdAndDelete(id);
+        res.status(201).json({ msg: 'product added success', product })
+    } catch (err) {
+        console.log('Error : ', err);
+        res.status(500).json({ msg: "something went bad" })
+    }
+}
+
+
+const decStockQty = async (req, res) => {
+    try {
+        const { id } = req.params;
+        let product = await ProductModel.findById(id);
+        // check if stock qty is not zero
+        if (product.stock_quantity === 0) return res.status(400).json({ msg: "stock qty can't go below zero" });
+        product.stock_quantity -= 1;
+        await product.save();
+        res.status(201).json({ msg: 'stock qty decreased', product })
+    } catch (err) {
+        console.log('Error : ', err);
+        res.status(500).json({ msg: "something went bad" })
+    }
+}
+
+const incStockQty = async (req, res) => {
+    try {
+        const { id } = req.params;
+        let product = await ProductModel.findById(id);
+        product.stock_quantity += 1;
+        await product.save();
+        res.status(201).json({ msg: 'stock qty increased', product })
+    } catch (err) {
+        console.log('Error : ', err);
+        res.status(500).json({ msg: "something went bad" })
+    }
+}
+
+module.exports = {
+    addProduct,
+    getAllProducts,
+    getProductById,
+    updateProductById,
+    deleteProductById,
+    decStockQty,
+    incStockQty
+}
