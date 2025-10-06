@@ -90,8 +90,6 @@ Inventory_Mngmnt_System/<br>
 │   └── product.model.js<br>
 ├── routes/<br>
 │   └── product.routes.js<br>
-├── tests/<br>
-│   └── product.test.js<br>
 ├── server.js<br>
 ├── package.json<br>
 └── .env<br>
