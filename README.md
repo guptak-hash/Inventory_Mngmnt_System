@@ -10,3 +10,22 @@ A robust backend API for managing products and inventory in a warehouse environm
 3. Error Handling: Comprehensive error handling with appropriate HTTP status codes
 
 4. Data Validation: Input validation and sanitization
+
+## Bonus Features
+1. Low Stock Alerts: Automatic detection of products below threshold
+
+2. RESTful Design: Clean API endpoints following REST principles
+
+##  API Endpoints
+
+## API Endpoints
+
+## API Endpoints
+
+| Method | Endpoint       | Description          | Request Body |
+|--------|----------------|----------------------|--------------|
+| POST   | `/product`     | Create a new product | `{ name, description,<br>stock_quantity,<br>low_stock_threshold }` |
+| GET    | `/product`     | Get all products     | - |
+| GET    | `/product/:id` | Get product by ID    | - |
+| PATCH  | `/product/:id` | Update product       | `{ name, description,<br>stock_quantity,<br>low_stock_threshold }` |
+| DELETE | `/product/:id` | Delete product       | - |
