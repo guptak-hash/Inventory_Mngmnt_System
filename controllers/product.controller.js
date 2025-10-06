@@ -14,8 +14,7 @@ const addProduct = async (req, res) => {
         if (err.name === 'ValidationError') {
             return res.status(400).json({ 
                 success: false,
-                message: 'Validation error',
-                errors: Object.values(err.errors).map(e => e.message)
+                message: 'Validation error'
             });
         }
         if (err.code === 11000) {
@@ -119,8 +118,7 @@ const updateProductById = async (req, res) => {
         if (err.name === 'ValidationError') {
             return res.status(400).json({ 
                 success: false,
-                message: 'Validation error',
-                errors: Object.values(err.errors).map(e => e.message)
+                message: 'Validation error'
             });
         }
         res.status(500).json({ 
