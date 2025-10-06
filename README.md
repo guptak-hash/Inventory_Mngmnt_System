@@ -60,23 +60,23 @@ A robust backend API for managing products and inventory in a warehouse environm
 ## Data Models
 Product Schema
 
-{
-  name: { type: String, required: true, unique: true },
-  description: { type: String, trim: true },
-  stock_quantity: { 
-    type: Number, 
-    required: true, 
-    min: 0,
-    default: 0
-  },
-  low_stock_threshold: {
-    type: Number,
-    default: 10,
-    min: 0
-  },
-  createdAt: Date,
-  updatedAt: Date
-}
+{<br>
+  name: { type: String, required: true, unique: true },<br>
+  description: { type: String, trim: true },<br>
+  stock_quantity: { <br>
+    type: Number, <br>
+    required: true, <br>
+    min: 0,<br>
+    default: 0<br>
+  },<br>
+  low_stock_threshold: {<br>
+    type: Number,<br>
+    default: 10,<br>
+    min: 0<br>
+  },<br>
+  createdAt: Date,<br>
+  updatedAt: Date<br>
+}<br>
 
 
 ## Project Structure
