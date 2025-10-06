@@ -1,28 +1,28 @@
+
 const express = require('express');
-const ProductModel = require('../models/product.model');
-const { addProduct, getProductById, getAllProducts, updateProductById, deleteProductById, decStockQty, incStockQty, } = require('../controllers/product.controller');
+const { 
+    addProduct, 
+    getProductById, 
+    getAllProducts, 
+    updateProductById, 
+    deleteProductById, 
+    decStockQty, 
+    incStockQty,
+    getLowStockProducts 
+} = require('../controllers/product.controller');
 
 const productRouter = express.Router();
 
-// create product
+// Product CRUD operations
 productRouter.post('/', addProduct);
+productRouter.get('/', getAllProducts);
+productRouter.get('/low-stock', getLowStockProducts); // Bonus feature
+productRouter.get('/:id', getProductById);
+productRouter.patch('/:id', updateProductById);
+productRouter.delete('/:id', deleteProductById);
 
-// read product, get all products
-productRouter.get('/',getAllProducts);
-
-// get product by id
-productRouter.get('/:id',getProductById);
-
-// update product
-productRouter.patch('/:id',updateProductById);
-
-// delete product
-productRouter.delete('/:id',deleteProductById);
-
-// decrease stock quantity
-productRouter.get('/decrease/:id',decStockQty);
-
-// increase stock quantity
-productRouter.get('/increase/:id',incStockQty);
+// Stock management operations
+productRouter.patch('/:id/increase-stock', incStockQty);
+productRouter.patch('/:id/decrease-stock', decStockQty);
 
 module.exports = productRouter;
