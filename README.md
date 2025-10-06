@@ -87,12 +87,12 @@ Inventory_Mngmnt_System/<br>
 ├── models/<br>
 │   └── product.model.js<br>
 ├── routes/<br>
-│   └── product.routes.js
-├── tests/
-│   └── product.test.js
-├── server.js
-├── package.json
-└── .env
+│   └── product.routes.js<br>
+├── tests/<br>
+│   └── product.test.js<br>
+├── server.js<br>
+├── package.json<br>
+└── .env<br>
 
 
 ##  Business Logic Rules
