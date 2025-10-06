@@ -81,12 +81,12 @@ Product Schema
 
 ## Project Structure
 
-Inventory_Mngmnt_System/
-├── controllers/
-│   └── product.controller.js
-├── models/
-│   └── product.model.js
-├── routes/
+Inventory_Mngmnt_System/<br>
+├── controllers/<br>
+│   └── product.controller.js<br>
+├── models/<br>
+│   └── product.model.js<br>
+├── routes/<br>
 │   └── product.routes.js
 ├── tests/
 │   └── product.test.js
