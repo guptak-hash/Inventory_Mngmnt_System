@@ -16,11 +16,10 @@ A robust backend API for managing products and inventory in a warehouse environm
 
 2. RESTful Design: Clean API endpoints following REST principles
 
-##  API Endpoints
 
 ## API Endpoints
 
-## API Endpoints
+### Product Management
 
 | Method | Endpoint       | Description          | Request Body |
 |--------|----------------|----------------------|--------------|
@@ -29,3 +28,14 @@ A robust backend API for managing products and inventory in a warehouse environm
 | GET    | `/product/:id` | Get product by ID    | - |
 | PATCH  | `/product/:id` | Update product       | `{ name, description,stock_quantity,low_stock_threshold }` |
 | DELETE | `/product/:id` | Delete product       | - |
+
+
+### Inventory Operations
+
+## Stock Management Endpoints
+
+| Method | Endpoint                       | Description                 | Request Body |
+|--------|--------------------------------|-----------------------------|--------------|
+| PATCH  | `/product/:id/increase-stock`  | Increase stock quantity     | `{ quantity }`(optional, defaults to 1) |
+| PATCH  | `/product/:id/decrease-stock`  | Decrease stock quantity     | `{ quantity }`(optional, defaults to 1) |
+| GET    | `/product/low-stock`           | Get products below threshold | - |
