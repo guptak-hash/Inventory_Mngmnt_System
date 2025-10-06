@@ -49,9 +49,9 @@ A robust backend API for managing products and inventory in a warehouse environm
    npm install
 
 3. Environment Configuration
-  Create a .env file in the root directory:
-  PORT=3000
-  MONGO_URI=mongodb://localhost:27017
+  Create a .env file in the root directory:<br>
+  PORT=3000<br>
+  MONGO_URI=mongodb://localhost:27017<br>
 
 4. Start the Server
    npm start
