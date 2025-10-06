@@ -32,10 +32,77 @@ A robust backend API for managing products and inventory in a warehouse environm
 
 ### Inventory Operations
 
-## Stock Management Endpoints
-
 | Method | Endpoint                       | Description                 | Request Body |
 |--------|--------------------------------|-----------------------------|--------------|
 | PATCH  | `/product/:id/increase-stock`  | Increase stock quantity     | `{ quantity }`(optional, defaults to 1) |
 | PATCH  | `/product/:id/decrease-stock`  | Decrease stock quantity     | `{ quantity }`(optional, defaults to 1) |
 | GET    | `/product/low-stock`           | Get products below threshold | - |
+
+
+## Installation & Setup
+
+1. Clone the Repository
+  git clone <repository-url>
+  cd Inventory_Mngmnt_System
+
+2. Install Dependencies
+   npm install
+
+3. Environment Configuration
+  Create a .env file in the root directory:
+  PORT=3000
+  MONGO_URI=mongodb://localhost:27017
+
+4. Start the Server
+   npm start
+
+
+## Data Models
+Product Schema
+
+{
+  name: { type: String, required: true, unique: true },
+  description: { type: String, trim: true },
+  stock_quantity: { 
+    type: Number, 
+    required: true, 
+    min: 0,
+    default: 0
+  },
+  low_stock_threshold: {
+    type: Number,
+    default: 10,
+    min: 0
+  },
+  createdAt: Date,
+  updatedAt: Date
+}
+
+
+## Project Structure
+
+Inventory_Mngmnt_System/
+├── controllers/
+│   └── product.controller.js
+├── models/
+│   └── product.model.js
+├── routes/
+│   └── product.routes.js
+├── tests/
+│   └── product.test.js
+├── server.js
+├── package.json
+└── .env
+
+
+##  Business Logic Rules
+
+1. Stock Validation: Stock quantity cannot go below zero
+
+2. Unique Names: Product names must be unique
+
+3. Positive Quantities: Stock operations require positive quantities
+
+4. Low Stock Detection: Automatic monitoring of products below threshold
+
+5. Atomic Operations: Stock updates are atomic to prevent race conditions
