@@ -24,8 +24,8 @@ A robust backend API for managing products and inventory in a warehouse environm
 
 | Method | Endpoint       | Description          | Request Body |
 |--------|----------------|----------------------|--------------|
-| POST   | `/product`     | Create a new product | `{ name, description,<br>stock_quantity,<br>low_stock_threshold }` |
+| POST   | `/product`     | Create a new product | `{ name, description,stock_quantity,low_stock_threshold }` |
 | GET    | `/product`     | Get all products     | - |
 | GET    | `/product/:id` | Get product by ID    | - |
-| PATCH  | `/product/:id` | Update product       | `{ name, description,<br>stock_quantity,<br>low_stock_threshold }` |
+| PATCH  | `/product/:id` | Update product       | `{ name, description,stock_quantity,low_stock_threshold }` |
 | DELETE | `/product/:id` | Delete product       | - |
