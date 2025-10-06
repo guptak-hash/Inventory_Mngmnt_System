@@ -1,5 +1,4 @@
 
-// controllers/product.controller.js
 const ProductModel = require("../models/product.model");
 
 // Add new product
